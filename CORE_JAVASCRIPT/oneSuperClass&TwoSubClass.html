@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function extend(child, parent) {
+      child.prototype = Object.create(parent.prototype);
+      child.prototype.constructor = child;
+    }
+
+    // Super class
+    var Mobile = function() {
+
+    }
+    //prototype Method
+    Mobile.prototype.getModel = function() {
+      return this.model;
+    }
+
+    // Sub class
+    var samsung = function(model, price) {
+      this.model = model;
+      this.price = price;
+    }
+
+    //sub class
+    var lenovo = function(model) {
+      this.model = model;
+    }
+
+    // make function inheritance function for parant and child
+
+
+    // inheritance
+
+    // this is long way to connect child to parent
+
+    
+    // samsung.prototype = Object.create(Mobile.prototype);
+    // samsung.prototype.constructor = samsung;// reseting the samsung constructor
+    //
+    // lenovo.prototype = Object.create(Mobile.prototype);
+    // lenovo.prototype.constructor = lenovo;
+
+
+    //inheritance call
+    extend(samsung, Mobile);
+    extend(lenovo, Mobile);
+
+    samsung.prototype.getPrice = function() {
+      return this.price;
+    };
+
+    var galaxy = new samsung('galaxy', 3000);
+    var phab2 = new lenovo('levPhone');
+    document.write(galaxy.getModel() + "<br />");
+    document.write(phab2.getModel() + "<br />");
+    document.write(galaxy.getPrice());
+  </script>
+</body>
+
+</html>

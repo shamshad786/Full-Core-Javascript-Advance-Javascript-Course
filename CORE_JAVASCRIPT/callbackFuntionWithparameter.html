@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback function with parameter</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+    
+     function show (a){
+         console.log('this is show function value of a = ' + a);
+     }
+
+     function sam (callback){
+         let a=8;
+         callback(a);
+     }
+
+     sam(show);
+//----------------------------------------
+    // second method of  paramneter function
+
+function app(){
+    console.log('This is second callback app function');
+}
+
+    function display(b,callfun){
+        
+        callfun(b);
+        console.log('this is display function values of b = '+b);
+    }
+
+display(88,app);
+
+
+//---------------------------------
+
+function acs(callbackfun){
+    let c= 121;
+    callbackfun(c);
+
+}
+
+acs (function wqw(c){
+    console.log('this is callback function define in calling function c = '+c);
+})
+
+//-----------------------------
+
+function shamshad(funreverse){
+    let d = 65;
+    funreverse(d);
+}
+shamshad(d=> console.log('this is shamshad callback funnction value of d = '+d));
+
+
+function deepak(abdul){
+    let e = 22;
+    let f= 232;
+
+    abdul(e,f);
+                        // ye latest method hai callback  function ko use karne ka hum fat arrow function use karte hai
+}
+
+deepak((e,f)=>{
+    console.log(`This is deepak callback function e,f =`+e+'/'+f);
+});
+     
+        </script>
+    
+</body>
+</html>

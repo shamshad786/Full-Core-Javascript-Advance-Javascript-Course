@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script type="text/javascript">
+
+        class Father {
+            constructor (money){
+
+                this.Fmoney = money;  
+            }
+            showFmoney(){
+                    return this.Fmoney + " Father Money";
+                }
+            }
+
+
+                class Son extends Father{ // ye father ke class ko extend kr rha h isliye isko inheritance ya super method bolte hai
+
+                    constructor (money){
+                        super(money); // super keyword ka istemaal kar ke parent class yani father ke constructor ko acess kr sakte hai
+                    }
+                showSmoney () {
+                    return 'This is Son money <br/>'; 
+                }
+            
+            }
+        var s = new Son(1000);
+        document.write(s.showFmoney() +"<br/> "); 
+        document.write(s.showSmoney());
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // this var can access from any where
+    var i = "this is global variable";
+
+    function show() {
+      document.write(i + "<br />");
+    }
+    show();
+    document.write(i + "<br />");
+
+    function disp() {
+      document.write(i + "<br />");
+    }
+    disp();
+
+    if (true) {
+      document.write(i + "<br />");
+      document.write("<br />");
+      document.write("<br />");
+      document.write("<br />");
+      document.write("This is Local variable function");
+
+      document.write("<br />");
+      document.write("<br />");
+
+    }
+
+    //-------------------------------------------------
+
+    //Local variable
+
+    function xyz() {
+      var j = "This is local variable";
+      document.write(j + "<br />");
+
+      function abc() {
+        var k = "This is local variable inside the function";
+        document.write(k + "<br />");
+        document.write(j + "<br />"); //inner function can access outer function vaariable
+      }
+      abc();
+      //document.write(k + "<br />");   //outer function variable cannot access the inner function variable
+    }
+    xyz();
+  </script>
+
+</body>
+
+</html>

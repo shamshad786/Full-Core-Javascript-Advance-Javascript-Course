@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+body{
+    background: url(./pic.jpg);
+    background-size: 100%;
+   background-position-x: center;
+    background-repeat: no-repeat;
+
+}
+
+.wrapper{
+    padding: 5px;
+    text-align: center;
+    margin-top: 200px;
+ 
+   border-radius: 14px;
+    width: 30%;
+    align-items: center;
+   margin-left: 500px;
+   background-color:rgba(0, 0, 1, 0.507);
+   
+    
+}
+
+
+
+input {
+    border: none;
+    padding: 5px;
+    outline: none;
+    border-radius: 4px;
+}
+
+textarea{
+    border: none;
+    padding: 5px;
+    outline: none;
+    border-radius: 4px;
+}
+
+
+
+.btn{
+    padding: 5px 15px;
+    background-color: rgb(184, 87, 3);
+    color: wheat;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.field{
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+

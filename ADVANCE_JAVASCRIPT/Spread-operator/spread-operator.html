@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Operator</title>
+</head>
+<body>
+
+    <code>
+        spread Operator Syntax;- <br> <br>
+       ye array ka spread operator hai = [...xyz];<br><br>
+       aur ye object ka spread operator hai = {...xyz};
+        <br>
+        <hr>
+    </code>
+
+
+    <script>
+        // array spread operator
+        let a = [10,20,30];
+        let b = [...a];// isme a ki value nikal ke b me aa gai hai , isme reference copy nahi hua hai direct values copy hua hai
+       // let b= [5,...a,40,70,80]; hum isko aise bhi likh sakte hai ye bhi possible  hai
+        a[0] = 100;
+
+       document.write("A = " + a + "<br>");
+       
+       document.write("B = " + b);// yaha a ki values copy hone ke baad b[0] array pr 10 show karega na ki 100
+//--------------------------------------------------------------------------------------------------------------------------------
+
+       let c = [50,60,70];
+       let d = [80,90,10];
+       let e = [...c,...d];// yaha hum 2 array leke un dono ke vlaue ko spread operator ke through show karwa sakte hai
+       console.log(c);
+       console.log(d);
+       console.log(e);
+
+//--------------------------------------------------------------------------------------------------------------------------------
+// object spread operator 
+
+let f = {courseName: "NodeJs", Student: "shamshad"};
+let g = {...f, duration: "6th Months"};
+
+let h = {f,g};
+
+f.courseName = "javascript";
+
+console.log(h);
+console.log(f);
+console.log(g);
+
+
+
+
+    </script>
+    
+</body>
+</html>

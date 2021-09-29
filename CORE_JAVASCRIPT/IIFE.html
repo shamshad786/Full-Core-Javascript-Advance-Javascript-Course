@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>immediately invoked function expression</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    (function() {
+      document.write("immediately invoked function expression");
+    })();
+    document.write("<br />");
+    // IIFE with parameter example
+    (function(a, b) {
+      document.write(a + " " + b);
+    })("shamshad", 24);
+
+    document.write("<br />");
+
+    // IIFE function with variable declare and call it
+
+    (function(a) {
+      document.write(a);
+    })(10);
+  </script>
+
+</body>
+
+</html>

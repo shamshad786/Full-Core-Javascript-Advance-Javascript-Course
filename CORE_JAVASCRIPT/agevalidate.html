@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        const age = 20;
+
+        function isGreater() {
+            if (age > 18) {
+                return true;
+            }
+            return false;
+        }
+        let validate = isGreater() && "age is greater";
+
+        document.write(validate); // output is flase because "age" is constant and "age" is less then 18.
+    </script>
+
+</body>
+
+</html>

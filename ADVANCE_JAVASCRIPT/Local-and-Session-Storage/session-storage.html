@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+</head>
+<body>
+
+    <script>
+        sessionStorage.setItem("name", "sam");
+        sessionStorage.setItem("email", "shamshad3300@gmail.com");
+
+        console.log(sessionStorage.key(1));
+        console.log(sessionStorage.getItem("email"));
+        sessionStorage.removeItem("email")
+
+        // saare data ko remove karne ke liye clear() method ka use karte hai 
+        sessionStorage.clear()// ye sab kuch remove kar dega session storage me se
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="myPara">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea excepturi
+      nostrum doloribus dolorum dolore accusamus quos voluptatem eaque rerum
+      ullam!
+    </p>
+    <br>
+    <button type="button" id="mybtn">Clicked</button>
+
+
+    <script>
+            let timeout = setTimeout(()=>{
+                document.getElementById("myPara").style= "color:red";
+            },3000);
+
+            function clrtime(){
+                clearTimeout(timeout); // ye function 3 second hone se pehle hi start time ko clear kar deta hai jissey timer band ho jata hai aur color change nahi hota.
+            }
+
+            document.getElementById("mybtn").addEventListener("click",clrtime);
+            console.log(timeout);
+
+    </script>
+  </body>
+</html>

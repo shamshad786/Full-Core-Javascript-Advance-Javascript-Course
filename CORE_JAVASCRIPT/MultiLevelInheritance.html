@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var Mobile = function() {
+      this.a = 10;
+    }
+
+    Mobile.prototype.z = 30;
+
+    var samsung = function() {
+      Mobile.call(this);
+      this.b = 20;
+    }
+
+    var galaxy = function() {
+      samsung.call(this);
+      this.c = 40;
+    }
+
+    samsung.prototype = Object.create(Mobile.prototype);
+    samsung.prototype.constructor = samsung;
+
+    galaxy.prototype = Object.create(samsung.prototype);
+    galaxy.prototype.constructor = galaxy;
+
+    var m = new Mobile();
+    var s = new samsung();
+    var g = new galaxy();
+
+
+    document.write("Galaxy object can access:" + "<br />" +
+      "Mobile A: " + g.a + "<br />" +
+      "Samsung B: " + g.b + "<br />" + "Galaxy C: " + g.c + "<br />" +
+      "Mobile prototype Z: " + g.z + "<br />" + "<br />");
+
+    document.write("Samsung object can access: " + "<br />" +
+      "Mobile A: " + s.a + "<br />" +
+      "Samsung B: " + s.b + "<br />" + "Galaxy C: " + s.c + "<br />" +
+      "Mobile prototype Z: " + s.z + "<br />" + "<br/>");
+
+
+    document.write("mobile object can access: " + "<br />" +
+      "Mobile A: " + m.a + "<br />" +
+      "Samsung B: " + m.b + "<br />" + "Galaxy C: " + m.c + "<br />" +
+      "Mobile prototype Z: " + m.z + "<br />" + "<br />");
+  </script>
+</body>
+
+</html>

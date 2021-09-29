@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    //----------------------------------------------
+    // var declaration
+    function myvar(a) {
+      var a = 10;
+      if (true) {
+        var a = 20;
+        document.write("this inner decalare variable value " + a + "<br />"); // it cant overwrite the value of exixting variable
+
+      }
+      document.write("this is outter declare variable value but is over with inner value " + a + "<br />");
+    }
+    myvar();
+
+    //--------------------------------------------------------------
+    // let declaration
+    function mylet() {
+       let b =100;
+         b = 200; // you can decalare variable and assignned value but is overwritw with another initalization and it run
+      if (true) {
+        let b = 60;
+
+        document.write("this inner let value define " + b + "<br />");
+      }
+      document.write("this is outter let value define " + b + "<br />");
+    }
+    mylet();
+
+    //-------------------------------------------------------
+
+    //const decalaration
+
+    function myconst() {
+      const  c;
+      c= 70; // it cannot run because you have to assign value with sametime during declare the variable it cannot change the value or overwrite.
+
+      if (true) {
+        const c = 90;
+
+        document.write("this is inner const value decalare " + c + "<br />");
+
+      }
+      document.write("this is outter const value declare " + c + "<br />");
+    }
+    myconst();
+  </script>
+
+</body>
+
+</html>

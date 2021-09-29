@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- ye mail ke application pr bhej dega direct mail send karne ke liye -->
+    <a href="mailto: shamshad3300@gmail.com ? cc= "abdukalam982@gmail.com & bcc = codinglabdelhi@gmail.com & subject = New Post">Send Mail </a>
+    
+<script type="text/javascript">
+//------------------------------------------------------------------------------------------------------
+<!--   const languages = ['javascript', 'python','C++'];-->
+
+<!--   languages.push('Dart'); last me data insert kar dega-->
+<!--   languages.unshift('java') first position me data insert kar dega;-->
+<!--   languages.pop() last wala data remove kar dega -->
+<!--        languages.shift() first position ka data remove kar dega -->
+<!--   console.log(languages);-->
+
+//------------------------------------------------------------------------------------------------------
+<!--&lt;!&ndash;loop&ndash;&gt;-->
+
+
+<!--for(let i = 0; i<=4; i++){-->
+<!--console.log('$');-->
+<!--}-->
+
+
+<!--const actors = [-->
+<!--        {-->
+<!--            name: 'actor 1',-->
+<!--            payment: 100-->
+<!--        },-->
+
+<!--        {-->
+<!--            name: 'actor 2',-->
+<!--            payment: 200-->
+<!--        },-->
+
+<!--        {-->
+<!--            name: 'actor 3',-->
+<!--            payment: 300-->
+<!--        },-->
+
+<!--        {-->
+<!--            name: 'actor 4',-->
+<!--            payment: 400-->
+<!--        }-->
+
+<!--];-->
+
+
+<!--for(let i =0; i<actors.length; i++){-->
+<!--        actors[i].payment = actors[i].payment - 10;-->
+<!--}-->
+<!--console.log(actors);-->
+
+
+<!--actors.forEach((actors)=>{-->
+<!--actors.payment = actors.payment - 50;-->
+
+<!--})-->
+<!--console.log(actors)-->
+
+
+<!--for of loop-->
+<!--for( let actor of actors){-->
+<!--actor.payment = actor.payment - 5;-->
+<!--}-->
+
+<!--console.log(actors)-->
+
+//------------------------------------------------------------------------------------------------------
+<!--filter-->
+
+<!--const students = [-->
+
+<!--{-->
+<!--    name: 'student 1',-->
+<!--    marks: 45-->
+
+<!--},-->
+
+<!--{-->
+<!--    name: 'student 2',-->
+<!--    marks: 60-->
+<!--},-->
+
+<!--{-->
+<!--    name: 'student 3',-->
+<!--    marks: 35-->
+
+<!--}-->
+<!--];-->
+
+
+<!--const failed = students.filter((student)=>{-->
+
+<!--return student.marks < 45;-->
+
+<!--if(student.marks < 45){ ye if condition ke sath bhi kam karega aur uper jaise signle line me likha h waise bhi chalega-->
+<!--return true;-->
+
+<!--}else{-->
+<!--    return false;-->
+<!--}-->
+
+<!--})-->
+
+<!--console.log(failed);-->
+
+//------------------------------------------------------------------------------------------------------
+
+<!--MAP() METHOD-->
+
+   //  const users = [
+   //  {
+   //      fname: 'Shamshad',
+   //      lname: 'Hussain'
+   //  },
+
+   //  {
+   //      fname: 'Naushad',
+   //      lname: 'Hussain'
+   //  }
+
+   //  ];
+
+   // const fullName = users.map((user)=>{
+
+   //      return {
+   //             // fullname: user.fname + " " +user.lname
+
+   //             fullname: `${user.fname} ${user.lname}`
+   //      }
+
+   //  });
+
+   //  console.log(fullName);
+
+
+//------------------------------------------------------------------------------------------------------
+
+   //Reducer
+
+
+   // const movies = [ 
+
+   //          {
+   //              movie: 'Interstaller',
+   //              budget: 700
+   //          },
+
+
+   //          {
+   //              movie: 'Titanic',
+   //              budget: 200
+   //          },
+
+   //          {
+   //              movie: 'Avtar',
+   //              budget: 300
+   //          }
+
+   // ];
+            //1st method
+       // let total = 0; 
+
+       //  movies.forEach((movie)=>{
+
+       //  // total = total + movie.budget ye bhi kam karega
+       //  total += movie.budget;  // new method hai code kam karne ke liye  
+
+       //  });
+
+       //  console.log(total);
+
+
+        //2nd method
+        // const total = movies.reduce((acc,movie)=>{ // iske call back function me first parameter 'accumulator' hota hai aur second parameter me 'data'
+        //         acc = acc + movie.budget
+        //         return acc;
+
+        // },0);
+
+        // console.log(total);
+
+
+//------------------------------------------------------------------------------------------------------
+        //indexof() ye index number return karta hai jab wo number array me exist hota h to true return karega warna false
+
+            // const admins = [2,1,5];
+
+            // const user = {
+            //     name: "Shamshad",
+            //     id:7
+            // }
+
+                    //1st method
+           // const isAdmin =  admins.indexOf(user.id) > -1;
+           // console.log(isAdmin);
+
+            //2nd method isme humne condition ki jarurat nahi hoti
+           // const isAdmin =  admins.includes(user.id);
+           // console.log(isAdmin);
+//------------------------------------------------------------------------------------------------------
+
+
+        // find() method
+
+      // const users = [
+
+      //       {
+      //           name: 'sam',
+      //           id:     1
+      //       },
+
+      //       {
+      //           name: 'abul',
+      //           id:     2
+      //       },
+
+      //       {
+      //           name: 'deep',
+      //           id:     3
+      //       }
+      // ];
+
+      // const findUser = users.find((user)=>{
+
+        // return user.name === 'abul'; ye single line me bhi kar sakte hai
+        // return  user.id === 1;
+
+        // if(user.id === 1){  ye if condition ke sath
+        //     return true
+        // }
+
+        // return false
+
+      // }); 
+
+      // console.log(findUser);
+//------------------------------------------------------------------------------------------------------
+
+
+//sort()
+
+
+// const names = ['shamashad','naushad','abdul','deepak','azaad','rohit']
+
+
+// names.sort(); ye A to Z ke form me set kar dega
+
+// console.log(names);
+
+
+//------------------------------------------------------------------------------------------------------
+
+//Splice
+
+// const names = ['shamashad','naushad','abdul','deepak','azaad','rohit']
+
+// names.splice(2,3) ye splice(index no, no of delete items) do parameters leta hai 1st array ka index no. aur 2nd kitne arrays delete karne hai 
+
+// console.log(names)
+
+</script>
+
+</body>
+</html>

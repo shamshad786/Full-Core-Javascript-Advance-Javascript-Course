@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <p>Prototype</p>
+  <script type="text/javascript">
+
+  console.log(Object.prototype);// it will return "Object.Prototype"
+var b = {};
+  console.log(Object.getPrototypeOf(b)); // b object is associated from Object.prototype.
+  console.log(Object.getPrototypeOf(Object.prototype)); // this Object.prototype is associated from Null
+
+  var b1 = new Object();
+  console.log(Object.getPrototypeOf(b1));// this b2 new object also associated from objectl.prototype
+  //-----------------------------------------------------------------------------------
+
+// let check array prototype
+
+var c1 = new Array();
+
+console.log(Object.getPrototypeOf(c1));// this return Array.prototype
+
+  </script>
+</body>
+</html>

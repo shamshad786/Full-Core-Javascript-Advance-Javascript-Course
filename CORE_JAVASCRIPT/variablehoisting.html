@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+  var a =10;
+  document.write(a +" "+b+ "<br />"); //hence b=undefined                             // in JS variable hoisting means
+                                                                      //var a;
+                                                                        //var b;
+                                                                        //a=10;
+                                                                        //document.write(a +" "+b+ "<br />");
+                                                                        //b=20;
+ var b =20;
+document.write(a +" "+b+ "<br />");          //but in second line b value initialize before
+                                              //b =20;
+                                              //document.write(a +" "+b+ "<br />"); then its output will appear
+  </script>
+
+</body>
+</html>

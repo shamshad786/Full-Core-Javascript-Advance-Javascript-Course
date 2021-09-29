@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var Mobile = function(model_no) {
+      this.model = model_no;
+      this.price = 5000;
+    };
+    var samsung = new Mobile("galaxy");
+    //class.prototype.key = value;
+    Mobile.prototype.color = "golden";
+    document.write(samsung.model + "<br>");
+    console.log(samsung);
+    document.write(samsung.color);
+  </script>
+
+</body>
+
+</html>

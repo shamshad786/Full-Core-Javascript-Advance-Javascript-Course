@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="tl">querry Selector</title>
+</head>
+<body>
+
+<h1 class="sam myClass"> Lorem ipsum dolor sit amet.</h1>
+
+<p class="pOneClass">Lorem ipsum dolor sit amet <span>consectetur</span> <em>World</em> <span>Shamshad Hussain</span></p>
+<p class="myClass">Lorem ipsum dolor sit amet <span>consectetur</span> .</p>
+
+<div id="show">
+<p>1st p inside div</p>
+<p class="pOneClass">2nd p inside div</p>
+</div>
+<p id="show1">another p tag</p>
+<h2 id="show1">This is H2 tag</h2>
+
+    
+
+<script>  
+            // element selector
+        // ye element seletor  ka example hai (element selector means html me p, h1, table, span etc ye sab element selector hai)
+        // ye usi element ko show karta jo element usko pehle mil jaaye chahe kitne bhi ssame element ho jo pehle milega usi ko show kar dega
+
+        // aur agar hum yaha multiple elemet dete hai jaise ("p,h1") to ye "p" ya "h1" dono me jo milega wahi return karega 
+
+    // let result = document.querySelector("p");
+    // document.write(result);
+    // console.log(result);
+//-------------------------------------------------------------------------------------------------------------
+
+    // id selector 
+
+    // is id selector bhi wahi return akrega jo isko pehela match milega chahe jitne bhi same id already ho jo first match milega wahi return karega
+// aur agar hum isme 2 id dete hai to eg-("#show,#show1") to wahi return karega jo isko pehle match karega dusre ko chood dega usko return nahi karega 
+
+    // let data =document.querySelector("#show1");
+    // document.write(data);
+    // console.log(data);
+//-----------------------------------------------------------------------------------------------------------------
+// class selector
+
+//class selector me "." use kar ke class ka naam dete hai 
+// aur agar hum class selector multiple class dete hai eg-(".sam,pOneClass") to ye wo return karega jo isko pehle mil jayega 
+
+let data = document.querySelector(".sam");
+document.write(data);
+console.log(data);
+
+
+</script>
+
+</body>
+</html>

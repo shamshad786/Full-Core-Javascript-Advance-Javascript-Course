@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+
+// sync function isme function step by step chalta hai jab tak step by step response nahi mil jata ye next req nahi leta
+
+         function myfun(){
+            console.log('first console my fun function')
+        }
+        myfun();
+
+        console.log('second console');
+        console.log('third console.log');
+
+
+        console.log('Sync start');
+
+        const roll = [1,2,3,4,5,6,7,8,9,10]; // callbacak function syncronous aur asyncrounous dono ho sakta hai
+
+        roll.forEach(r =>{
+            console.log('roll = '+r);
+        });
+
+        console.log('Sync end');
+
+// Async function ye function step by step nahi leta isko jo req pehle milta hai wo usko pehle output de deta hai
+
+
+
+
+console.log('start console text');
+
+setTimeout(()=>{
+    console.log('second async console text');
+},2000);
+
+console.log('end console text');
+
+
+
+
+
+</script>
+    
+</body>
+</html>

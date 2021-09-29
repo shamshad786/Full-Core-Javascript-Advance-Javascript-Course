@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h1>Exception Handling</h1>
+
+
+            <script>
+                try{
+                    app();
+                }
+                catch(e){
+                    document.write("Message: " + e.message+"<br>");
+                    document.write("Name: "+e.name+"<br>");
+                    document.write("Stack: "+e.stack+"<br>");
+                }
+
+                finally {
+                    document.write("code execute any how if exception occur or not");// ye finally block kisi hal me code run karega chahe execption error ho ya na ho.
+                }
+            </script>
+</body>
+</html>

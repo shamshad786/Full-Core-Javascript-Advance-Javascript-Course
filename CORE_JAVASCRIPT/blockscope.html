@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    if (true) {
+
+      var a = 10;
+      document.write(a + "<br />");
+    }
+    document.write(a + "<br />"); // you can access the variable outside of block scope(mean if statement)
+
+
+    if (true) {
+      let b = 20;
+      document.write(b + "<br />");
+    }
+    document.write(b + "<br />"); // but if you define any variable with "let" keyword you can not access outside the block scope(means if statement)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var Mobile = function(model_no, sell_price) {
+      this.model = model_no;
+      var price = 5000; // put var keyword it will make it private property.
+      var color = "blue";
+      this.sprice = sell_price;
+      this.sellp = function() {
+        return ("hello world");
+      };
+    };
+    var samsung = new Mobile("galaxy", 2000);
+    var nokia = new Mobile("n8", 5000);
+
+    document.write(nokia.price); // you cant't access private property from outside.
+    document.write(samsung.color);
+  </script>
+
+</body>
+
+</html>

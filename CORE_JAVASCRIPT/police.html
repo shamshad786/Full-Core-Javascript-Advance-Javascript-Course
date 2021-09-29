@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	Delhi Police MV Theft
+</title><meta http-equiv="x-ua-compatible" content="IE=9" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><link id="Link1" rel="shortcut icon" href="favicon.ico" type="image/x-icon" /><link id="Link2" rel="icon" href="favicon.ico" type="image/ico" /><link href="css/CLmainCss.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var validPhone = false;
+        var validEmail = false;
+
+        function pageLoad(sender, args) {
+
+            $("#vrfemail").hide();
+            $('#imgvalid').hide();
+            $("#expiremsg").hide();
+            $('#imgnotvalid').hide();
+            $('#imgvalid2').hide();
+            $('#imgnotvalid2').hide();
+
+        }
+
+        $(document).ready(function () {
+
+            $("#vrfemail").hide();
+            $('#imgvalid').hide();
+            $("#expiremsg").hide();
+            $('#imgnotvalid').hide();
+            $('#imgvalid2').hide();
+            $('#imgnotvalid2').hide();
+
+            $('.specialChar').keypress(function (e) {
+                if (e.which == 60 || e.which == 62 || e.which == 34 || e.which == 39 || e.which == 38 || e.which == 124) {
+                    return false;
+                }
+            });
+
+            $('.phonenumber').keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && ((e.which < 48 || e.which > 57) && (e.which != 43))) {
+                    return false;
+                }
+            });
+
+            $('#vrfphn').unbind().click(function () {
+
+                $('#imgnotvalid').hide();
+                $('#imgvalid').hide();
+                $("#expiremsg").hide();
+                var Email = ''
+                var mobotp = $('#txtmobotp').val();
+                if (mobotp != "Enter OTP") {
+                    $("#txtmobotp").removeClass("requiredcss");
+                    $.ajax({
+                        type: "POST",
+                        url: 'functionClass.aspx/validateotp',
+                        data: "{'email':'" + Email + "','phoneotp':'" + mobotp + "'}",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        success: function (response) {
+
+                            if (response.d != "OTP expired") {
+
+                                var msg = response.d.split('-')[0];
+                                var mobotp1 = response.d.split('-')[1];
+                                var emailotp1 = response.d.split('-')[2];
+                                if (mobotp == msg) {
+                                    $('#imgvalid').show();
+                                    $('#imgnotvalid').hide();
+                                    validPhone = true;
+                                    //   validEmail = true;
+                                    if (mobotp1 == "True" && emailotp1 == "True") {
+                                        $("#ContentPlaceHolder1_btnsendcode").hide();
+                                        window.location.href = "main.aspx";
+                                    }
+                                }
+                                else {
+
+                                    validPhone = false;
+                                    // validEmail = false;
+                                    $('#imgvalid').hide();
+                                    $('#imgnotvalid').show();
+                                }
+                            }
+                            else {
+                                $('#txtmobotp_text').val("");
+                                $("#expiremsg").show();
+
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+                    });
+                }
+                else {
+
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter your OTP to verify.');
+                    $("#txtmobotp").addClass("requiredcss");
+                    return false;
+
+
+                }
+            });
+
+
+            $('a.btn-ok').click(function () {
+                $('#dialog-overlay, #dialog-box').hide();
+                return false;
+            });
+
+            // if user resize the window, call the same function again
+            // to make sure the overlay fills the screen and dialogbox aligned to center
+            $(window).resize(function () {
+
+                //only do it if the dialog box is not hidden
+                if (!$('#dialog-box').is(':hidden')) popup();
+            });
+
+
+
+            //// for showing tiles to respective users
+
+
+
+
+
+
+            //// for showing tiles to respective users end here
+
+
+        });
+        //////////////////////////////////////
+
+        function UniqueEmailMobile() {
+            var Email = $('#txtemail').val();
+            var mob = $('#txtmobno').val();
+            var status = "1";
+            $.ajax({
+                type: "POST",
+                url: 'functionClass.aspx/validateMobilEmail',
+                data: "{'email':'" + Email + "','mobile':'" + mob + "'}",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (response) {
+
+                    var msg = response.d;
+                    var exemail = msg[0];
+                    var exmob = msg[1];
+                    if (parseInt(msg[0]) > 0) {
+                        status = "2";
+
+                    }
+                    if (parseInt(msg[1]) > 0) {
+                        status = "3";
+
+                    }
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+
+            if (status == "2") {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Email already exis<br/>');
+                return false;
+            }
+            else if (status == "3") {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Mobile No. already exist<br/>');
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+
+
+        ///////////////////////////////////
+
+        function isValidEmailAddress(emailAddress) {
+            var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+            return pattern.test(emailAddress);
+        }
+
+        //////////////////////////////////////////
+
+        function alpha(e) {
+            var k;
+            document.all ? k = e.keyCode : k = e.which;
+            return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
+        }
+
+        ///////////////////////////////////////
+
+
+        function ValidateBothOTPs() {
+
+            if (validPhone == false) {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Your OTP for phone is not verified<br/>');
+                return false;
+            }
+
+
+        }
+        //////////////////////////////////////////
+
+        function checkUserAvailability(obj) {
+
+            if (obj == 2) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> User already registered.<br/>');
+
+            }
+
+
+        }
+
+        function checkloginOTP(obj) {
+
+            if (obj == 2) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> OTP has been expired. Click on NEW OTP button to generate again.<br/>');
+                return false;
+
+            }
+            else if (obj == 3) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Invalid OTP.<br/>');
+                return false;
+
+            }
+            else if (obj == 0) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Some error occured.<br/>');
+                return false;
+
+            }
+            else if (obj == 5) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> OTP has been sent to your registered email & mobile number successfully.<br/>');
+                return false;
+            }
+            else if (obj == 7) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> OTP has been sent to your registered mobile number successfully.<br/>');
+                return false;
+            }
+            else if (obj == 11) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> OTP has been sent to your registered mobile number successfully.<br/>');
+                return false;
+            }
+            else if (obj == 8) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> OTP has been sent to your registered email id successfully.<br/>');
+                return false;
+            }
+            else if (obj == 9) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> OTP has been sent to your registered email id successfully.<br/>');
+                return false;
+            }
+            else if (obj == 10) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> OTP has been sent to your registered email id successfully.<br/>');
+                return false;
+            }
+            else if (obj == 6) {
+
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Mobile number or email id not verified.<br/>');
+                return false;
+            }
+
+
+        }
+
+
+        ////////////////////////////////////
+
+        function logValidated(obj) {
+
+            if (obj == 4) {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> User Id should not be empty<br/>');
+
+            }
+            else if (obj == 3) {
+                var showmessgae = '<b>Message from Delhi Police Vehicle Theft Application.</b><br/>Your mobile no is not verified. Please <a href = "/OTP.aspx?EvtId" text-decoration="none;">Click</a> here to Verify it.<br/>';
+                //popup(showmessgae);
+
+            }
+            else if (obj == 2) {
+                //var showmessgae = '<b>Message from Delhi Police Vehicle Theft Application.</b><br/>Your mobile no is not verified. Please <a href = "/OTP.aspx?EvtId" text-decoration="none;">Click</a> here to Verify it.<br/>';
+                //popup(showmessgae);
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> You are already logged into the system.<br/>');
+
+            }
+            else if (obj == 0) {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> You are not registered! Please Sign Up<br/>');
+
+            }
+            else if (obj == 5) {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> User is not in Active State.<br/>');
+
+            }
+
+        }
+
+        ///////////////////////////////////////////////////////////////////
+        function regValidation() {
+
+
+
+            var ret = true;
+            if ($("#ContentPlaceHolder1_txtusername").val() == "e.g. Deepak Singh") {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> User name should not be empty<br/>');
+                ret = false;
+            }
+            else if ($("#ContentPlaceHolder1_txtemail").val() == "e.g. mymail@mail.com") {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Email Id should not be empty<br/>');
+                ret = false;
+            }
+            else if (!isValidEmailAddress($("#ContentPlaceHolder1_txtemail").val())) {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Please enter correct email id.<br/>');
+                ret = false;
+            }
+            else if ($("#ContentPlaceHolder1_txtmobno").val() == "e.g. 9800000000") {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Mobile No. should not be empty<br/>');
+                ret = false;
+            }
+            else if ($("#ContentPlaceHolder1_txtmobno").val().length < 10) {
+                popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Please enter correct mobile number.<br/>');
+                ret = false;
+            }
+            else if (ret != false) {
+                ret = UniqueEmailMobile();
+            }
+            //            if ($("#ContentPlaceHolder1_txtmobno").val() != "e.g. 9800000000") {
+            //                var reg1 = new RegExp(/^[\s()+-]?.([0-9]*){6,20}$/);
+            //                if (!reg1.test($("#ContentPlaceHolder1_txtmobno").val())) {
+            //                    popup('<b>Message from Delhi Police Vehicle Theft Application.</b><br/> Please enter correct mobile number.<br/>');
+            //                    ret = false;
+            //                }
+            //            }
+
+            return ret;
+        }
+
+        ////////////////////////////////////////////////////////////
+
+        function popup(message) {
+            $('#dialog-message').html(message);
+            // get the screen height and width
+            var maskHeight = $(window).height();
+            var maskWidth = $(window).width();
+
+            // calculate the values for center alignment
+            var dialogTop = (maskHeight / 2) - ($('#dialog-box').height() / 2);
+            var dialogLeft = (maskWidth / 2) - ($('#dialog-box').width() / 2);
+
+            if (dialogTop < 10)
+                dialogTop = 10;
+            // assign values to the overlay and dialog box
+            $('#dialog-overlay').show();
+            $('#dialog-box').show().css({ top: dialogTop, left: dialogLeft });
+
+            // display the message
+
+
+        }
+
+        /////////////////////////////////////////////////////
+
+        function MoveNext(obj, obj2, siz) {
+
+            if ($(obj).val().length == siz) {
+                $("#ContentPlaceHolder1_" + obj2).focus();
+            }
+        }
+
+
+
+        /////////////////////////////////////////////////////////
+    </script>
+    <style type="text/css">
+        .requiredcss {
+            border-color: #e00130;
+        }
+
+        #blur {
+            width: 100%;
+            background-color: black;
+            moz-opacity: 0.5;
+            khtml-opacity: .5;
+            opacity: .5;
+            filter: alpha(opacity=50);
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 40000;
+        }
+
+        #progress {
+            background-color: transparent;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border: solid 1px black;
+            padding: 5px 5px 5px 5px;
+            text-align: center;
+            margin-top: 23%;
+            margin-left: 48%;
+            background-color: #fff;
+            z-index: 50000;
+        }
+
+        #dialog-overlay {
+            /* set it to fill the whil screen */
+            width: 100%;
+            height: 100%; /* transparency for different browsers */
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+            -khtml-opacity: 0.5;
+            opacity: 0.5;
+            background: lightgray; /* make sure it appear behind the dialog box but above everything else */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 3000; /* hide it by default */
+            display: none;
+        }
+
+        #dialog-box {
+            /* css3 drop shadow */
+            -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* css3 border radius */
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            background: #fff; /* styling of the dialog box, i have a fixed dimension for this demo */
+            width: 370px; /* make sure it has the highest z-index */
+            position: fixed;
+            z-index: 5000; /* hide it by default */
+            display: none;
+            border: 2px groove #000;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+            #dialog-box .dialog-content {
+                /* style the content */
+                text-align: left;
+                padding: 10px;
+                margin: 13px;
+                color: #e00130;
+                line-height: 180%;
+                font-family: segoe ui, verdana, arial, sans-serif;
+                font-size: 13px;
+            }
+
+        a.button {
+            /* styles for button */
+            margin: 15px auto 0 auto;
+            text-align: center;
+            background-color: #0075ce;
+            display: block;
+            width: 50px;
+            padding: 5px 10px 6px;
+            color: #fff;
+            text-decoration: none;
+            font-family: segoe ui, verdana, arial, sans-serif;
+            font-weight: bold;
+            line-height: 1; /* css3 implementation :) */
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+            border-bottom: 1px solid rgba(0,0,0,0.25);
+            position: relative;
+            cursor: pointer;
+        }
+
+            a.button:hover {
+                background-color: #52aa10;
+            }
+        /* extra styling */ #dialog-box .dialog-content p {
+            font-weight: 700;
+            margin: 0;
+        }
+
+        #dialog-box .dialog-content ul {
+            margin: 10px 0 10px 20px;
+            padding: 0;
+            height: 50px;
+        }
+
+        #tableContainer-1 {
+            height: 100%;
+            width: 100%;
+            display: table;
+        }
+
+        #tableContainer-2 {
+            vertical-align: middle;
+            display: table-cell;
+            height: 100%;
+        }
+
+        #myTable {
+            margin: 0 auto;
+        }
+    </style>
+    <script language="Javascript" type="text/javascript">
+        /**
+        * DHTML date validation script. Courtesy of SmartWebby.com (http://www.smartwebby.com/dhtml/datevalidation.asp)
+        */
+        // Declaring valid date character, minimum year and maximum year
+        var dtCh = "/";
+        var minYear = 1900;
+        var maxYear = new Date().getFullYear();
+
+        function isInteger(s) {
+            var i;
+            for (i = 0; i < s.length; i++) {
+                // Check that current character is number.
+                var c = s.charAt(i);
+                if (((c < "0") || (c > "9"))) return false;
+            }
+            // All characters are numbers.
+            return true;
+        }
+
+        function stripCharsInBag(s, bag) {
+            var i;
+            var returnString = "";
+            // Search through string's characters one by one.
+            // If character is not in bag, append to returnString.
+            for (i = 0; i < s.length; i++) {
+                var c = s.charAt(i);
+                if (bag.indexOf(c) == -1) returnString += c;
+            }
+            return returnString;
+        }
+
+        function daysInFebruary(year) {
+            // February has 29 days in any year evenly divisible by four,
+            // EXCEPT for centurial years which are not also divisible by 400.
+            return (((year % 4 == 0) && ((!(year % 100 == 0)) || (year % 400 == 0))) ? 29 : 28);
+        }
+        function DaysArray(n) {
+            for (var i = 1; i <= n; i++) {
+                this[i] = 31
+                if (i == 4 || i == 6 || i == 9 || i == 11) { this[i] = 30 }
+                if (i == 2) { this[i] = 29 }
+            }
+            return this
+        }
+
+        function isDate(dtStr, purpose) {
+
+            var ret1 = true;
+
+
+            var daysInMonth = DaysArray(12)
+            var pos1 = dtStr.indexOf(dtCh)
+            var pos2 = dtStr.indexOf(dtCh, pos1 + 1)
+            var strDay = dtStr.substring(0, pos1)
+            var strMonth = dtStr.substring(pos1 + 1, pos2)
+            var strYear = dtStr.substring(pos2 + 1)
+            strYr = strYear
+            if (strMonth.charAt(0) == "0" && strMonth.length > 1) strMonth = strMonth.substring(1)
+            if (strDay.charAt(0) == "0" && strDay.length > 1) strDay = strDay.substring(1)
+            for (var i = 1; i <= 3; i++) {
+                if (strYr.charAt(0) == "0" && strYr.length > 1) strYr = strYr.substring(1)
+            }
+            day = parseInt(strDay)
+            month = parseInt(strMonth)
+            year = parseInt(strYr)
+
+            if (pos1 == -1 || pos2 == -1) {
+
+                if (purpose == "dob") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid date in date of birth.');
+                }
+                else if (purpose == "theftdatefrom") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid date in vehicle theft date from.');
+                }
+                else if (purpose == "theftdateto") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid date in vehicle theft date to.');
+                }
+                else if (purpose == "passport") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid date in passport issue date.');
+                }
+                else if (purpose == "MISfromdate") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid date in from date.');
+                }
+                else if (purpose == "MIStodate") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid date in to date.');
+                }
+                ret1 = false;
+            }
+            else if (strMonth.length < 1 || month < 1 || month > 12) {
+                if (purpose == "dob") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid month in date of birth.');
+                }
+                else if (purpose == "theftdatefrom") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid month in vehicle theft date from.');
+                }
+                else if (purpose == "theftdateto") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid month in vehicle theft date to.');
+                }
+                else if (purpose == "passport") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid month in passport issue date.');
+                }
+                else if (purpose == "MISfromdate") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid month in from date.');
+                }
+                else if (purpose == "MIStodate") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid month in to date.');
+                }
+                ret1 = false;
+            }
+            else if (strDay.length < 1 || day < 1 || day > 31 || (month == 2 && day > daysInFebruary(year)) || day > daysInMonth[month]) {
+                if (purpose == "dob") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid day in date of birth.');
+                }
+                else if (purpose == "theftdatefrom") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid day in vehicle theft date from.');
+                }
+                else if (purpose == "theftdateto") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid day in vehicle theft date to.');
+                }
+                else if (purpose == "passport") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid day in passport issue date.');
+                }
+                else if (purpose == "MISfromdate") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid day in from date.');
+                }
+                else if (purpose == "MIStodate") {
+                    popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid day in to date.');
+                }
+                ret1 = false;
+            }
+            else if (strYear.length != 4 || year == 0 || year < minYear || year > maxYear) {
+
+                var msg = "";
+                if (purpose == "dob") {
+                    var msg = "Please enter a valid 4 digit year between " + minYear + " and " + maxYear + " in DOB.";
+                }
+                else if (purpose == "theftdatefrom") {
+                    var msg = "Please enter a valid 4 digit year between " + minYear + " and " + maxYear + " in vehicle theft date from.";
+                }
+                else if (purpose == "theftdateto") {
+                    var msg = "Please enter a valid 4 digit year between " + minYear + " and " + maxYear + " in vehicle theft date to.";
+                }
+                else if (purpose == "passport") {
+                    var msg = "Please enter a valid 4 digit year between " + minYear + " and " + maxYear + " in passport issue date.";
+                }
+                else if (purpose == "MISfromdate") {
+                    var msg = "Please enter a valid 4 digit year between " + minYear + " and " + maxYear + " in from date.";
+                }
+                else if (purpose == "MIStodate") {
+                    var msg = "Please enter a valid 4 digit year between " + minYear + " and " + maxYear + " in to date.";
+                }
+                popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>' + msg);
+                ret1 = false;
+            }
+            else if (dtStr.indexOf(dtCh, pos2 + 1) != -1 || isInteger(stripCharsInBag(dtStr, dtCh)) == false) {
+
+                popup('<strong>Message from Delhi Police Vehicle Theft Application.</strong><br/>Please enter a valid date in passport issue date.');
+                ret1 = false;
+            }
+            return ret1;
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <form method="post" action="./Retrievefir.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="KDQmwEvA/HKBI8aSQHbvJdVgeI9sGgAg+hJD52T8ub7ZVBPnjw/lrTRBKueg270aYkWK4VCc07DLBFrt+pjxLHOC3RnKqKWzTvZ+YtAyO1Ao3VQJKpCJkHgUOTItP9iFkhy8qLM4E66viwtNtW7z/cXVvrkTArPSHNDixILgMeFJBCmM2+cXrofPs6oKsZQNduMzInODxo4N0xPkP5owhaev34qBTf+Piyf1fjIahCijE/CFz+SCVnstOgd6vNuih3nGaoXpUCrQ5IczbFuq0uYCiex4amlEFnHPTf4OIU+n0xq+S07o7hKyXktaunuOE3dsDnbo99qTTloCvj3lRzj9Dbrfwh3NzkKFTObDFFFbZ91orkTE2UFuMDOx5NBgPLwwTwV30cEjt2mQABJ473Th4J14xDj6cekbbBoD7mfxoZsO0QZUC8TCU7sgLjK+SXTHNPOY6FuR1FqGIB4yWA0eiinLb7Lo4eh/WxV7T2xlNXOZVlZQxq9rVcpj842etUCD+WCMYVTPh0lGi4qw82LwVMVIqn7QE5oyFSgzYl/OapTLwwLy4eiJ/CHvk4av8MYryNLtN7soyB7WgwFyDYWRlYMT3K8iT8a6sQWJxak0TvfxirA++rovD0G8pWppdh+TUViTa8dAbuhbYo7EvA==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="064FD5BB" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="H5bZQRxsmaZXIA6XtKOwykaSAahaGygWB8eSjZt1dBAUTIrR4TKEVyWDBSb+3LHiUqCamlv/TjLACsJOJrCn1wY13yY1MK4UiDjOk3FBonS0mL9HF8ssnvvnEJp3lXNUsz5uwXJc9PdeGUS/rcJq2MNSB7lMUTWDme95Vi/Sjc4ugPpfJEJKGiyq1Bp7f+Lt8wHxZcku1Da3Qk38ywNjqu72VIPGPsRhdubrvwrqb/g=" />
+</div>
+        <div id="dialog-overlay">
+        </div>
+        <div id="dialog-box">
+            <div class="dialog-content">
+                <div id="dialog-message">
+                </div>
+                <a href="#" class="button btn-ok">Ok</a>
+            </div>
+        </div>
+        <div class="wrap">
+            <div id="header">
+                <div class="logoBox">
+                    <img alt="" src="images/logo.png" width="189" height="125" />
+                </div>
+                <div class="rightBox">
+                    <img alt="" src="images/banner.png" width="100%" height="131" />
+                </div>
+                <div class="clearDiv">
+                </div>
+            </div>
+            <div style="width: 98%; padding: 5px 1%; background-color: #dddddd;">
+                <div style="width: 60%; color: #900; font-size: 13px; text-align: left; float: left; font-weight: bold; font-family: Verdana, Geneva, sans-serif;">
+                    <span id="lblwelcome">Welcome :</span>
+                    <span id="lblUserName">Manish</span>
+                </div>
+                <div style="width: 40%; color: #900; font-size: 13px; text-align: right; float: right; font-weight: bold;">
+                    <a id="lnkbuttonhome" href="javascript:__doPostBack(&#39;ctl00$lnkbuttonhome&#39;,&#39;&#39;)" style="color: #900; font-weight: bold; font-family: Verdana, Geneva, sans-serif;">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a id="lnkbtnLogout" href="javascript:__doPostBack(&#39;ctl00$lnkbtnLogout&#39;,&#39;&#39;)" style="color: #900; font-weight: bold; font-family: Verdana, Geneva, sans-serif;">LOGOUT</a>
+                </div>
+                <div class="clearBoth" style="clear: both;">
+                </div>
+            </div>
+        </div>
+        <div class="clearDiv">
+        </div>
+        <div>
+
+    <div class="registerFIRBodyContainer">
+        <div class="heading2">
+            Retrieve FIR</div>
+        <div class="clearDiv">
+        </div>
+        <br />
+        <div class="clearDiv">
+            &nbsp;</div>
+        <div class="clearDiv">
+        </div>
+        <div>
+            <div>
+	<table cellspacing="0" id="ContentPlaceHolder1_gvYears" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">
+                        </th>
+		</tr><tr>
+			<td>
+                            <div id="ContentPlaceHolder1_gvYears_Panel1_0">
+
+                                <fieldset style="margin: 1%; border-color: #ccc; border-width: 2px; border-style: solid;">
+                                    <legend style="margin-left: 3%">
+                                        2020</legend>
+                                    <input type="hidden" name="ctl00$ContentPlaceHolder1$gvYears$ctl02$hdYear" id="ContentPlaceHolder1_gvYears_hdYear_0" value="2020" />
+                                    <table id="ContentPlaceHolder1_gvYears_dlaccfir_0" cellspacing="0" cellpadding="10" style="border-collapse:collapse;">
+					<tr>
+						<td>
+                                            <input type="image" name="ctl00$ContentPlaceHolder1$gvYears$ctl02$dlaccfir$ctl00$ImageButton1" id="ContentPlaceHolder1_gvYears_dlaccfir_0_ImageButton1_0" src="images/folder.png" style="height:70px;width:70px;" />
+                                            <br />
+                                            <a id="ContentPlaceHolder1_gvYears_dlaccfir_0_LinkButton1_0" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gvYears$ctl02$dlaccfir$ctl00$LinkButton1&#39;,&#39;&#39;)" style="color:Black;font-size:10pt;text-decoration: none; padding-top: 15px; padding-left: 12px;">024085</a>
+                                        </td><td></td><td></td><td></td><td></td><td></td><td></td>
+					</tr>
+				</table>
+                                </fieldset>
+
+			</div>
+                        </td>
+		</tr>
+	</table>
+</div>
+        </div>
+    </div>
+
+        </div>
+        <div class="clearDiv">
+        </div>
+        <div id="footer">
+            Copyright &copy; 2015 Delhi Police. All Rights Reserved.
+           <div id="tableContainer-1">
+               <div id="tableContainer-2">
+                   <table id="myTable">
+                       <tr>
+                           <td>
+                               <b>No of times site visited (Since 24 September 2018)=</b>
+                           </td>
+                           <td>
+                              <!-- hitwebcounter Code START -->
+<a href="http://www.hitwebcounter.com" target="_blank">
+<img src="http://hitwebcounter.com/counter/counter.php?page=6996405&style=0006&nbdigits=9&type=page&initCount=1" title="Must See Places In Paris" Alt="Must See Places In Paris"   border="0" >
+</a>                                        <br/>
+                                        <!-- hitwebcounter.com --><a href="http://www.hitwebcounter.com" title=""
+                                        target="_blank" style="font-family: ;
+                                        font-size: px; color: #; text-decoration:  ;">
+                                        </a>
+
+
+                           </td>
+                       </tr>
+                   </table>
+               </div>
+           </div>
+        </div>
+    </form>
+</body>
+</html>

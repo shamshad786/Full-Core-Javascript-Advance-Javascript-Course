@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback hell resolve with use of promise</title>
+</head>
+<body>
+    <p>callback hell resolve with use of promise</p>
+    
+    <script type="text/javascript">
+
+    function getName (name){
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                console.log('Inside name text');
+                    resolve(name)
+            },2000);
+        });
+    };
+
+    function getHobbies(name){
+            return new Promise((resolve, reject)=>{
+                    setTimeout (()=>{
+                            resolve(['Playing','Games','Cricket']);
+                    },1000);
+            });
+    }
+
+    getName('Hussain').then(nm=>getHobbies(nm,console.log(nm))).then(hobby=>console.log(hobby)
+    ).catch(error=>console.log(error));
+
+    </script>
+
+
+</body>
+</html>

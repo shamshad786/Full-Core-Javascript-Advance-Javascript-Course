@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script type="text/javascript">
+
+        class Mobile {
+            constructor(){
+                this.a = 12;
+                this.show = function(){
+                    return  "Intance Member";
+                };
+
+            }
+
+                display () {
+                    return 'Prototype Member';
+                }
+           
+
+        }
+
+        var nokia = new Mobile();
+        document.write(nokia.a+" "+nokia.show());
+
+</script>
+
+</body>
+</html>

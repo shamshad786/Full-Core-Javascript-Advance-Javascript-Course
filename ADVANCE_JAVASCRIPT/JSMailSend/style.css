@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: teal;
+    padding-top: 1%;
+}
+
+h1{
+    color: yellow;
+    text-align: center;
+    padding-bottom: 3%;
+}
+
+input,textarea{
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    color: 
+}
+
+label{
+    color: yellow;
+}
+
+.container{
+    width: 50vw;
+    margin: auto;
+}
+
+.form-item{
+   display: grid;
+   grid-template-columns: 100%;
+}
+
+button{
+    width: 70%;
+    position: relative;
+    left: 15%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    background-color: yellow;
+    color: black;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: orange;
+}
+

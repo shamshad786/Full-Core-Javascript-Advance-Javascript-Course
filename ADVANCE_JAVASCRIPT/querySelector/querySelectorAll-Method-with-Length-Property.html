@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="sam myClass">Lorem ipsum dolor sit amet.</h1>
+
+    <p class="pOneClass">
+      Lorem ipsum dolor sit amet <span>consectetur</span> <em>World</em>
+      <span>Shamshad Hussain</span>
+    </p>
+    <p class="sam">
+      Lorem ipsum dolor sit amet <span class="myspan">consectetur</span> .
+    </p>
+
+    <div id="show">
+      <p>1st p inside div</p>
+      <p class="pOneClass">
+        2nd p inside div <span class="sam">some more text</span>
+      </p>
+      <span>hello</span>
+    </div>
+    <p id="show1">another p tag</p>
+    <div id="show2">This is div tag</div>
+
+
+    <script>
+                //Length Property
+
+        // 1st method
+
+                // let data = document.querySelectorAll(".sam").length;
+                // document.write(data);
+                // console.log(data);
+
+        //   2nd method  
+        
+                let data = document.querySelectorAll(".sam");
+                let result = data.length;
+                document.write(result +"<br>");
+                
+                document.write(data);
+                console.log(data);
+
+                // ye tab use karte hai jab hume kisi class ,element, attribute ka length janna ho
+
+
+    </script>
+  </body>
+</html>

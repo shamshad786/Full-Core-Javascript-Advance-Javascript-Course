@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="" name="myform" id="myformid">
+        <label for="">Username :</label>
+        <input type="text" name="m_username_field" id="userName" value="shamshad">
+        <br>
+        <br>
+        <label for="">Password  :</label>
+        <input type="password" name="m_password_field">
+        <br>
+        <br>
+        <input type="submit" name="m_sbtn" value="Submit" >
+    </form>
+    <hr> 
+    
+    <script>
+
+    // yaha hum name field ko access karenge form me se aur uske type ko bhi dekh sakte hai
+
+    // let username = document.getElementById("userName");
+    // console.log(username);
+    // console.log(username.name);
+    // console.log(username.type);
+    // console.log(username.id);
+
+//______________________________________________________________________________________________
+    // element property with index number
+
+    // yaha humne elements ka use kar ke form ke input fields ko access kiya hai with index number[] means array ka use kar ke
+    // let username = document.myform.elements[2];
+    // console.log(username.name);
+//________________________________________________________________________________________________
+
+    //element with [name attribute value]
+
+    // let username = document.myform.elements["m_username_field"];// aise bhi likh sakte hai
+    let username = document.myform.elements.m_username_field;
+    // username.value = "hussain" // iaka use kar ke hum forkm field ke value ko  bhi access kar sakte hai
+    console.log(username);
+    console.log(username.name);
+    console.log(username.type);
+    console.log(username.id);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script type="text/javascript">
+// without calback function
+
+        function myName(naam){
+            setTimeout(()=>{
+                console.log('Inside text');
+                return naam;
+            },2000); 
+        }
+
+       const nm= myName('shamshad');
+        console.log(nm);// ye code ek dum sahi h isme problem ye hai ki name show nahi hoga kyuki 2 second ke time ke baad hi function req karega tab tak time out nahi hota function exucute ho jata hai to 
+                            // naam kabhi show hi nahi hoga is problem ko solve karne ke liye callback funtion ka use karte hai. 
+
+//----------------------------------------------------------------------------------------------------------------------------
+// with callback funtion // ab hum same code ko callback function ke sath banate hai 
+
+
+// ab hume name milega kyu ki humne humne callback funtion ka use kiya hai callback function name ko hold kar ke rakhta hai
+                            // jab timeout over ho jata hau uske baad callback, function ko call karta hai
+
+function getName(name,callback){
+    setTimeout(()=>{
+        console.log('callback  name function text');
+        callback(name);
+    },2000);
+}
+function Hobbies(name,callback){
+
+        setTimeout(()=>{
+                console.log('callback hobbies function text');
+                callback(['gaming, listen songs, cricket']);
+        },2000)
+}
+const nam = getName('Shamshad hussain', (nam)=>{
+        console.log(nam);
+        Hobbies(nam,(hobby)=>{
+            console.log(hobby); // agar humne bahut saare function define karne ke callback se usko use kiya to wo bahut confusing ban jayega
+                                    // fir usko bola jata callback hell is callback hell se bachne ke liye hum promise ka use karte hai
+        })
+});
+
+
+
+
+    </script>
+    
+</body>
+</html>

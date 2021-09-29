@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var Mobile = function(model_no) {
+            this.model = model_no;
+            var price = 2000; // this "var" make property private
+            this.color = "black";
+
+            this.accesOutside = function() { // this is method makes property public and then you can access from outside
+                return (price);
+            };
+        };
+
+        var sony = new Mobile("xperia");
+
+        document.write(sony.accesOutside()); // now you can access the property from outside the body.
+    </script>
+
+</body>
+
+</html>

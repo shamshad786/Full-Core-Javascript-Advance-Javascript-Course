@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    //Declaration of object
+    var fees = {};
+    fees["abdul"] = 100;
+    fees["deepak"] = 200;
+    fees["shamshad"] = 300;
+    document.write("this method with square baracket[] " + fees["abdul"]);
+    document.write("<br />");
+    //-------------------------------------------------------------------------------
+    // you can also type these with .(dot) operator
+
+    fees.lucky = 400;
+    fees.naushad = 500;
+    fees.sam = 600;
+
+    document.write("this output with square baracket[]" + fees["lucky"]);
+    document.write("<br />");
+    document.write("this output with .(dot) operator" + fees.naushad);
+    document.write("<br />");
+    //------------------------------------------------------------------------------
+
+    // creating method
+
+
+    fees["total"] = function() {
+      return (100 + 500);
+    };
+
+    document.write(fees["total"]() + "<br />");
+
+    document.write("you can also print with .(dot operator)" + fees.total());
+  </script>
+
+</body>
+
+</html>

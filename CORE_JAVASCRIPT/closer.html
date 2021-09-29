@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var i = 10;
+
+    function show() {
+      var j = 20;
+      document.write(i + "<br />");
+      document.write(j + "<br />"); //this is closer example means you can acess outside variable scope into function
+    }
+    show();
+
+    //-------------------------------------------------------------------------------------------------
+
+    function outter() {
+      var k = "K is the local variable of outter function";
+      document.write(k + "<br />");
+
+      function inner() {
+        var j = "J the local variable of inner function";
+        document.write(j + "<br />");
+        document.write(k + "<br />"); // it run beacuse due closer scope inner function can access variableof outter function
+      }
+      inner();
+      document.write(j + "<br />"); // it not run beacuse outter function can not be acess the inner function variable
+    }
+    outter();
+  </script>
+
+</body>
+
+</html>

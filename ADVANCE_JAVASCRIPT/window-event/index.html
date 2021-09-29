@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- onload ko direct body me likhne se window open hote hi alert fire ho jata hai ye window event hai  -->
+<!-- <body onload="alert('hello onload fire');"> -->
+
+<body>
+
+    <div id="mydiv">
+        <!-- <a href="../ZiClJf-1920w.jpeg" download="shamshad">download</a> ye image ko download kar deta h click karne pr --> 
+    </div>
+
+    <script>
+                // ye anonymous function ke through likh sakte hai
+        // window.onload = function (){
+        //     document.getElementById("mydiv").textContent = "window load event changed the event";
+        // }
+
+                        //arrow function ke through bhi hum likh sakte hai
+                // window.onload = () => {
+                //     document.getElementById("mydiv").textContent = "this text change through window event fat arrow function"
+                // }
+
+
+                // ab addEventListner ke through hum moder tarike se likhenge
+
+                function show (){
+                    document.getElementById("mydiv").textContent="eventlistner fire";
+                }
+                window.addEventListener("load",show);
+    </script>
+
+</body>
+</html>

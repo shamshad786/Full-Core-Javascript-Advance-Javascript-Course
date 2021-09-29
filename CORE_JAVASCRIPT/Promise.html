@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ptomise</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+    // promise ko use kiya jata hai async operation ko deals karne ke liye taki hum callback hell se bach sake
+    // hum promise ko use karte hai future me result ke return ke liye
+
+
+    // promise ke 3 state hote hai:-
+
+    //  Pending - inital state, Not yet fulfilled or reject
+    //  Fulfilled/Resolved - Promise Complete
+    //  Reject - promise Failed
+
+    // 23:40 minute se video contunue karna hai
+
+
+    const promiseObj = new Promise((resolve, reject)=>{
+        let req = true; // ye example tha .then() method me value or error ko catch kar ke show karne ke liye
+        if (req == true){
+            resolve('req success');
+        }else{
+            reject('req failed');
+        }
+    }).then(
+        (value)=>{console.log(value)},
+        (error)=>{console.log(error);}
+    );
+    
+//--------------------------------------------------------------------------
+
+// chaining method .... chain method usko bolte jisme .then() method ka baar baar use karte hai
+
+
+    const promiseTest = new Promise((resolve,rejct)=>{
+        let num = 10;
+        resolve(num)
+    }).then(
+        (value)=>{
+            return value +10;
+        }
+    ).then(
+        (value)=>{
+            return value +30;
+        }).then(
+            (value)=>{console.log(value);}
+        );
+//--------------------------------------------------------------------------------
+
+// catch() method hum errors ko catch karne ke liye use karte hai
+
+// catch() method ko bhi chaining method ke jaise use kar sakte hai jaise humne uper then() method ko chain form me likha hau
+
+
+const catchPromise = new Promise((resolve,reject)=>{
+    let res = true;
+    if(res== true){
+        resolve('request success');
+    }
+    else{
+        reject('request not successful');
+    }
+}).then((value)=>{
+    console.log(value);
+}).catch((error)=>{
+    console.log(error);
+});
+
+//chaining catch() method example
+
+
+const cathObject = new Promise((resolve,reject)=>{
+    let sum = 300;
+    resolve(sum);
+}).then((value)=>{
+    console.log(value);
+    return value +300;
+}).then(()=>{
+    throw new Error('Error Found in cath chain method'); // jaan bhuj ke yaha error throw kiya hai ki hume cath() me error mile
+}).catch((error)=>{
+    console.log(error);
+})
+
+//--------------------------------------------------------------------------------------
+
+//finally() method execute hoga hi hoga chahe promise fullfiled ho ya reject
+
+const finallypromise = new Promise((resolve, reject)=>{
+    let next = true;
+    if(next == true){
+        resolve('Finally method execute successfully');
+
+    }else{
+            console.log('Finally method execution failed');
+    }
+}).then((value)=>{
+    console.log(value);
+}).catch((error)=>{
+    console.log(error);
+}).finally(()=>{
+    console.log('cleaned');
+});
+
+    
+    </script>
+    
+</body>
+</html>

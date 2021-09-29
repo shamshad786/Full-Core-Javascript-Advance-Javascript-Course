@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function Mobile(model_no) {
+      this.model = model_no;
+      this.color = "black";
+      this.ram = "4GB";
+      this.camera = "16 MP";
+      this.price = function() {
+        return ("price rs. 2000");
+      };
+    }
+
+    var samsung = new Mobile("galaxy s1");
+    var sony = new Mobile("xperia");
+    //   document.write(Object.keys(sony)); // this line only show keys name eg:- model, ram, color etc
+    for (var specs in samsung) {
+      if (typeof samsung[specs] !== "function") { // this if function hide mrthod from the object key ex:- samsung(object) and price is (key)
+        document.write(specs + "  " + sony[specs] + "<br />"); // by adding key (specs) it will also show objects keys
+      }
+    }
+  </script>
+
+</body>
+
+</html>

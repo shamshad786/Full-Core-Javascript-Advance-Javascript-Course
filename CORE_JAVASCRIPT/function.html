@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Types of fuction</h1></br>
+  <p>Library function which is predefined by JS </br>
+    Ex:- valueOf(), write(), alert() etc
+  </p>
+
+  <h2>Focus On User Define fuction</h2></br>
+  <script type="text/javascript">
+    // creating function without parameters
+
+    function display() {
+      document.write("Shamshad Hussain </br>  ");
+    }
+
+    // calling function
+    display();
+
+    //----------------------------------------------------------------------
+
+    //creating function with parameters
+
+    function Display(name)
+
+    {
+      document.write(name);
+    }
+
+    Display("parameters <br />");
+
+    //-----------------------------------------------------------
+    function add(a, b, c) {
+      document.write("A:" + a + "B:" + b + "C:" + c);
+
+    }
+    add(10, 20, );
+    document.write("</br>");
+
+    function me(name1, name2) {
+      document.write(arguments[0]);
+      document.write(arguments[1]);
+      document.write(arguments.length); // for calculating how many arguments are present
+    }
+    me("shamahad", "Hussain");
+    document.write("</br>");
+
+    function abdul(name, roll, subj) {
+      document.write(name + roll + subj);
+    }
+    abdul("abdul", 21, "science");
+    document.write("</br>");
+    //----------------------------------------------------------
+    // rest parameter
+    function restparameter(...args) {
+      document.write(args)
+    }
+
+    restparameter(10, 20, 30, 40);
+    document.write("</br>");
+
+    //--------------------------------------------------------------
+
+    //rest parameter vs arguments objects
+
+    function restpr(...args) {
+      console.log(args);
+    }
+
+    restpr(10, 20, 30, 40, 50);
+
+    //arguments objects
+
+    function argsobj() {
+      //  console.log("a: " + a);
+      console.log(arguments);
+    }
+
+    argsobj(10, 20, 30, 40, 50);
+
+    document.write("</br>");
+    //-------------------------------------------
+
+    //return statement
+    function calc(a, b) {
+      return (a + b);
+    }
+    document.write(calc(10, 20));
+  </script>
+
+</body>
+
+</html>

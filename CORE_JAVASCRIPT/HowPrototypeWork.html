@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function Mobile() {
+
+    }
+    document.write(Mobile); // this function is holding the the whole function
+    console.log(Mobile.prototype); // this is prototypeObject of Mobile function and this is point to "Mobile" prototype Object
+
+    var lg = new Mobile();
+    console.log(lg.__proto__); // this object is point to Mobile.prototype
+
+    // verify
+
+    console.log(Mobile.prototype === lg.__proto__); // this true because Mobile.prototype is equal to lg.__proto__
+    console.log(Mobile === lg.__proto__.constructor); // this also give true
+    console.log(Mobile === Mobile.prototype.constructor); // this is true
+
+    //------------------------------------------------------------------
+
+    function Prt() {
+      this.a = 30;
+    }
+    Prt.prototype.a = 10;
+    var xyz = new Prt();
+
+    console.log(xyz.a); // this access a=30 first because xyz object getting access from Prt function a=30 value.
+  </script>
+</body>
+
+</html>

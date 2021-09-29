@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Function</title>
+</head>
+<body>
+
+    <h5>callback Function</h5>
+
+    <script type="text/javascript">
+    
+    function show (){ // ye callback function hai bina parameter ke 
+        console.log('this is show function');
+    }
+
+    function sam(callback){
+        callback();// aur hum yaha callback function ko uske ander hi call kar lete hai
+    }
+
+    sam(show); // yaha function pass kar rahe hai, jaise hum parameter ke values ko pass karte the waise hi sidha  function passs kar rahe hai
+
+    </script>
+    
+</body>
+</html>

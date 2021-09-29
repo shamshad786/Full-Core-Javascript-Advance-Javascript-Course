@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function disp(xyz) {
+      return xyz;
+    }
+    document.write(disp("passing anonymous function"));
+
+    document.write("<br />");
+
+    function a(abc) {
+      return abc(); // if your remove "()" from return like this:- "return abc;" the output gives you direct function exact code with anonymous function
+    }
+    document.write(a(function() {
+      return "passing argumrnts succeeded";
+
+    }));
+  </script>
+
+</body>
+
+</html>

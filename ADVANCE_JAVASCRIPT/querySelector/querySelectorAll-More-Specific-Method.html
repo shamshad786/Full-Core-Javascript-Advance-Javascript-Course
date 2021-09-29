@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="tl">querry Selector</title>
+</head>
+<body>
+
+<h1 class="sam myClass"> Lorem ipsum dolor sit amet.</h1>
+
+<p class="pOneClass">Lorem ipsum dolor sit amet <span>consectetur</span> <em>World</em> <span>Shamshad Hussain</span></p>
+<p class="myClass">Lorem ipsum dolor sit amet <span class="myspan">consectetur</span> .</p>
+
+<div id="show">
+<p>1st p inside div</p>
+<p class="pOneClass">2nd p inside div <span class="spanClass">some more text</span></p>
+<span>hello</span>
+</div>
+<p id="show1">another p tag</p>
+<div id="show2">This is div tag</div>
+
+    
+
+<script>  
+                // all return NodeList
+
+            // More Specific
+          let data = document.getElementById("show");
+          let result = data.querySelectorAll("span.spanClass");// ye attribute pass kiya h to dusra span return nahi karega agar dusre span ka class bhi same hoga to ye dono span class show karega 
+          document.write(result); //aur ye apne id ke bahar ke same span aur class ko find kar ke return nahi karega kyu ki wo apne div ke bahar hai
+          console.log(result);  
+
+</script>
+
+</body>
+</html>

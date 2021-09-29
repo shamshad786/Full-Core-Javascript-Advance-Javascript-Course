@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="tl">querry Selector</title>
+</head>
+<body>
+
+<h1 class="sam myClass"> Lorem ipsum dolor sit amet.</h1>
+
+<p class="pOneClass">Lorem ipsum dolor sit amet <span>consectetur</span> <em>World</em> <span>Shamshad Hussain</span></p>
+<p class="myClass">Lorem ipsum dolor sit amet <span>consectetur</span> .</p>
+
+<div id="show">
+<p>1st p inside div</p>
+<p class="pOneClass">2nd p inside div</p>
+</div>
+<p id="show1">another p tag</p>
+<h2 id="show1">This is H2 tag</h2>
+
+    
+
+<script>  
+            // All return NodeList
+
+//Element Selector
+
+// isme saare element  ko return karta jo bhi elements available hai
+
+        // let data = document.querySelectorAll("p");
+        // let data = document.querySelectorAll("p, div,h1");
+        // document.write(data);
+        // console.log(data);
+//--------------------------------------------------------------------------------------------------
+
+// class selector
+
+// isme bhi saare class ko return karega jo bhi usko return karta rahega
+
+        // let data =document.querySelectorAll(".pOneClass");
+        // document.write(data);
+        // console.log(data);
+
+        // let  data = document.querySelectorAll("p.myClass");
+        // let data = document.querySelectorAll("p > span");
+        // document.write(data);
+        // console.log(data);
+//----------------------------------------------------------------------------------------------------
+
+//Attribute Selector 
+
+// isme saare attribute ko return kareg jaha jaha usko milega
+// aur sirf ek hi attribute ko return karana ho to uska div ke sath attribute dene se wo return karega
+
+// let data = document.querySelectorAll("div[id]");
+let data = document.querySelectorAll("div[id='show'");
+document.write(data);
+console.log(data);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="" name="myform" id="myformid">
+        <label for="">Username :</label>
+        <input type="text" name="m_username_field">
+        <br>
+        <br>
+        <label for="">Password  :</label>
+        <input type="password" name="m_password_field">
+        <br>
+        <br>
+        <input type="submit" name="m_sbtn" value="Submit" >
+    </form>
+    <hr> 
+    <hr>
+    <form action="" name="yourform" id="yourformid">
+        <label for="">Username :</label>
+        <input type="text" name="y_username_field">
+        <br>
+        <br>
+        <label for="">Password  :</label>
+        <input type="password" name="y_password_field">
+        <br>
+        <br>
+        <input type="submit" name="y_sbtn" value="Submit" >
+    </form>
+    
+
+    <script>
+                //array index number ke through form access aise karte hai
+        // let mform = document.forms[0];
+        // console.log(mform);
+//-----------------------------------------------------------------------------------------
+
+        //square bracket ka use karke name attribute ke through form ko accessn karte hai
+
+        // let yform = document.forms['yourform'];
+        // console.log(yform);
+//-----------------------------------------------------------------------------------------        
+        // dot ke through name atrribute ko access kar sakte hai
+
+        // let mform = document.yourform;
+        // console.log(mform);
+//-----------------------------------------------------------------------------------------
+
+        // getElementById ke through form ko access karte hai
+
+        let form = document.getElementById("yourformid");
+        console.log(form);
+
+
+    </script>
+
+</body>
+</html>

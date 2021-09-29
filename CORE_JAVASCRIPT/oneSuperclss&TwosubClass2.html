@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var Mobile = function(model) {
+      this.model = model;
+    }
+    Mobile.prototype.getModel = function() {
+      return this.model;
+    };
+
+    var samsung = function(model, price) {
+      Mobile.call(this, model);
+      this.price = price;
+
+
+    }
+
+    samsung.prototype = Object.create(Mobile.prototype);
+    samsung.prototype.constructor = samsung;
+
+
+    var samsung = new samsung('galaxy', 3000);
+    document.write(samsung.getModel());
+    document.write(samsung.model);
+  </script>
+
+</body>
+
+</html>

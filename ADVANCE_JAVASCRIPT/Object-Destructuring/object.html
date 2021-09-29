@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Destructuring</title>
+</head>
+<body>
+    <script>
+        // object destructuring
+
+        // let roll = {
+        //     name: "shamshad",
+        //     designation: "Developer",
+        //     exp: "3 years"
+        // };
+        // let {name,designation,exp}= roll;// isko direct bhi likh ke destructuring kar sakte hai
+
+        // let = {name:nm,designation:des,exp:xp} = roll;
+
+        // console.log(nm);
+        // console.log(des);
+        // console.log(xp);
+
+
+        //Object Passing to a function
+
+
+        // let yourRoll = {
+        //     name: "shamshad",
+        //     designation: "Developer",
+        //     exp: "3years"
+        // };
+
+        // function show ({name,designation,exp}){
+        //         console.log(name);
+        //         console.log(designation);
+        //         console.log(exp);
+        // }
+
+        // show(yourRoll);
+
+        //Object returning from a function
+
+        // let kwiqsoft = {
+        //     name: "Shamshad",
+        //     name2: "Naushad",
+        //     name3: "Deepak",
+        //     name4: "Abdul",
+        //     name5: "Azaad"
+        // };
+        // function show (z){
+        //     return z;
+        // }
+
+        // let x = show(kwiqsoft);
+
+        // let = {name,name2,name3,name4,name5} = x;
+        // console.log(name);
+        // console.log(name2);
+        // console.log(name3);
+        // console.log(name4);
+        // console.log(name5);
+
+
+        // Nested Object Destructuring 
+
+let a = {
+    name: "Sam",
+    name2: "Naushad",
+
+   newName: {
+        name3:"Azaad",
+        name4: "Manish"
+    }
+};
+
+let {name,name2, newName: {name3,name4}} = a;
+console.log(name);
+console.log(name2);
+console.log(name3);
+console.log(name4);
+
+
+
+    </script>
+</body>
+</html>

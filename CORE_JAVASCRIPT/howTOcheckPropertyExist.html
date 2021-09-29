@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function Mobile(model_no) {
+      this.model = model_no;
+      this.memory = 4;
+      document.write(this.model + "<br />");
+    }
+
+
+
+    var samsung = new Mobile("galaxy");
+    var nokia = new Mobile(3310);
+    //--------------------------------------------------------
+
+    // check the peroperty with "typeof" operator
+
+    if (typeof nokia.memory !== "undefined") {
+      document.write("available" + "<br />");
+    }
+    if (typeof nokia.price !== "undefined") {
+      document.write("available" + "<br />");
+    } else {
+      document.write("unavailable" + "<br />");
+    }
+    //-------------------------------------------------------------
+
+    // check the poperty with "in" operator
+
+    document.write("let check with IN operator that property exixt or not" + "<br />");
+    if ("model" in samsung) {
+      document.write("yes it available" + "<br />")
+    }
+    if ("price" in samsung) {
+      document.write("yes its exist" + "<br />")
+    } else {
+      document.write("no it's not available" + "<br />");
+    }
+    //--------------------------------------------------------------------
+
+    // check the property with "hasOwnProperty()"
+
+    document.write("check the property with hasOwnProperty() operator" + "<br />");
+    if (nokia.hasOwnProperty("color")) {
+      document.write("yes color available" + "<br />");
+    } else {
+      document.write("no color is not available");
+    }
+  </script>
+
+</body>
+
+</html>

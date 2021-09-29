@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script type="text/javascript">
+
+        class Mobile{
+
+            constructor (model_no) {
+
+                this.model = model_no;
+            }
+                show() {
+                    return this.model + "price 3000";
+                }
+            
+        }
+
+        var phone = new Mobile("samsung");
+        var newPhone = new Mobile("iPhone");
+        document.write(phone.show()+"<br>");
+        document.write(newPhone.show());
+
+</script>
+
+</body>
+</html>

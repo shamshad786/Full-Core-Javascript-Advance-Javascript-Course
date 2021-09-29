@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var fun = () => {
+      document.write("This is Arrow function");
+    };
+    fun();
+    document.write("<br />");
+
+
+    var parfun = (a, b) => {
+      document.write(a + " and " + b + " this is arrow fuction with parameter");
+    };
+    parfun(10, 30);
+
+    document.write("<br />");
+    //.....................................................
+
+    // arrow function with rest parameter
+
+
+    var restpara = (a, ...arguments) => {
+      document.write(a + " " + arguments);
+    };
+
+    restpara(10, 20, 30, 40, 50, 60, 70);
+
+    document.write("<br />");
+
+    //---------------------------------------------------------
+
+
+    // arrow function without {} in single line
+
+
+    var withoutcurlbrace = (a) => document.write(a);
+    document.write("this is string" + "<br />");
+    withoutcurlbrace(90); // it print string first then print parameter
+    document.write("<br />");
+
+
+    //---------------------------------------------------------
+    //arow function with {} in multi line
+
+    var withcurlbrace = (b) => {
+      document.write(b + "<br />");
+      document.write("this is second string"); // when you put {} code will execute block of statement & they print parameter first then print string
+
+    }
+
+    withcurlbrace(100);
+  </script>
+
+</body>
+
+</html>

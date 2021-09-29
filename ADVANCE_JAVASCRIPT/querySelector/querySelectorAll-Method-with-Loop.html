@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 class="sam myClass">Lorem ipsum dolor sit amet.</h1>
+
+    <p class="pOneClass">
+      Lorem ipsum dolor sit amet <span>consectetur</span> <em>World</em>
+      <span>Shamshad Hussain</span>
+    </p>
+    <p class="sam">
+      Lorem ipsum dolor sit amet <span class="sam">consectetur</span> .
+    </p>
+
+    <div id="show">
+      <p>1st p inside div</p>
+      <p class="pOneClass">
+        2nd p inside div <span class="sam">some more text</span>
+      </p>
+      <span>hello</span>
+    </div>
+    <p id="show1">another p tag</p>
+    <div id="show2">This is div tag</div>
+
+    <script>
+
+        // isme hum kisi class ka nodelist ya uska index number dekhna chahte hai to uska array number deke dekh dsakte hai
+        // let data = document.querySelectorAll(".sam")[1];
+        // document.write(data);
+        // console.log(data);
+
+        //___________________________________________________________________________________________
+
+        //Loop
+
+        let data = document.querySelectorAll(".sam");
+        let result = data.length;
+        for(let i=0; i<result; i++){
+            let dt = document.querySelectorAll(".sam")[i];
+            // let dt = data[i]; hum isko aise bhi likh sakte hai
+            document.write(dt);
+            console.log(dt);
+        }
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+    // Async Function 1
+       //async function funName(){'function statement'}
+    
+     // Async Funtion Expression 2
+            //let funcName = async function(){'function statement'}
+
+      // Async Arrow Function
+        //let functName = async () =>{'function statement'}  
+        
+        
+            function getName(name){
+                return new Promise((resolve,reject)=>{
+                    setTimeout (()=>{
+                        resolve(name);
+                    },2000);    
+                })
+            }
+
+            function getHobbies(name){
+                return new Promise((resolve,reject)=>{
+                    setTimeout(()=>{
+                        resolve(['Playing games','Coding', 'learning new things'])
+                    },1000)
+                });
+            };
+
+                async function showHobby(){
+                    try{
+                        const nm = await getName('Shamshad');
+                    const hobby = await getHobbies(nm);
+                    console.log(nm);
+                    console.log(hobby);
+                    }
+                    catch(error){
+                        console.log(error);
+                    }
+                }
+                showHobby()
+
+        </script>
+    
+</body>
+</html>

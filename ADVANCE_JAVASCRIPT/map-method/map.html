@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map method</title>
+</head>
+<body>
+    <h1>map method</h1>
+
+    <!-- Syntax -->
+    <h4>Syntax ;-</h4>
+    <h3>map(callback(currentValue,index,array),thisArg);</h3>
+
+
+    <script>
+        //example 1;
+
+
+        // let arr = [10,20,30,40,50,60];
+        // let newArr = arr.map(function(value){ // is newArr map array ke data ko console karne ke liye return karna hota hai
+        //     value++;
+        //     return value;
+        // });
+
+        // console.log(newArr);
+
+
+        //example 2
+
+        let arr = [
+            {price:100, product:"Mobile"},
+            {price:200, product:"laptop"},
+            {price:300, product:"bike"},
+            {price:400, product:"Bag"}
+
+        ];    
+
+        let newArr = arr.map((value)=>{
+           return value.product;
+        });
+
+        console.log(newArr);
+
+    </script>
+</body>
+</html>

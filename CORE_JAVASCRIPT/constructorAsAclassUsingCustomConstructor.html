@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+  var Mobile = function(model_no, sell_price){
+    this.model = model_no;
+    this.price = 5000;
+    this.color = "blue";
+    this.sprice = sell_price;
+    this.sellp = function(){
+      return(this.price+this.sprice)
+    };
+
+    this.data = function (){
+      document.write("Model No: "+ this.model +"<br />"+ "Price: "+ this.sellp()+"<br />");
+    }
+
+  };
+
+   var samsung = new Mobile("galaxy",7000);
+   var nokia = new Mobile("N8",8000);
+
+/*  for(var spec in samsung){
+    if (typeof samsung[spec] !=="function"){
+      document.write(spec + " "+samsung[spec]+"<br />");
+    }
+  }*/ //this line of code will print all objects key on screen.
+samsung.data();
+nokia.data();
+  </script>
+
+</body>
+</html>

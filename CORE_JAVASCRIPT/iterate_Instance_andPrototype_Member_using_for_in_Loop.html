@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var Mobile = function(model_no) {
+      this.model = model_no;
+      this.price = 7000;
+    };
+
+    var samsung = new Mobile("galaxy");
+    Mobile.prototype.color = "white";
+    document.write(Object.keys(samsung) + "<br />"); // this line only iterate intance key not prototype keys.
+    console.log(samsung);
+    for (var keys in samsung) {
+      document.write("keys: " + keys + "<br />"); // this line will iterate prototype key too.
+    }
+  </script>
+</body>
+</html>
